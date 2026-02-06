@@ -257,6 +257,9 @@ class PortfolioTester:
         print("🚀 Starting Besong Wisdom Portfolio Backend Tests")
         print("=" * 60)
         
+        # Environment tests
+        self.test_production_vs_local()
+        
         # Core functionality tests
         self.test_homepage_loads()
         self.test_mock_data_fallback()
