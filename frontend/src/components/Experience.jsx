@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Briefcase, Calendar, MapPin } from 'lucide-react';
-import { experienceData } from '../mock';
+import { getExperience } from '../firebase/services';
+import { experienceData as mockExperienceData } from '../mock';
 
 const Experience = () => {
   const formatDate = (dateString) => {
