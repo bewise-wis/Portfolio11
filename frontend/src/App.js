@@ -18,7 +18,7 @@ import { ThemeProvider } from './context/ThemeContext';
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-[#0a0a0a]">
+    <div className="min-h-screen bg-primary transition-colors duration-300">
       <Header />
       <main>
         <Hero />
