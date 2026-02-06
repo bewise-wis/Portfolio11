@@ -24,22 +24,24 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Mock submission - will be replaced with Firebase
-    setTimeout(() => {
-      contactMessages.push({
-        ...formData,
-        timestamp: new Date().toISOString(),
-        id: Date.now().toString()
-      });
+    try {
+      await submitContactMessage(formData);
 
       toast({
         title: 'Message sent successfully!',
-        description: 'Thank you for reaching out. I\'ll get back to you soon.',
+        description: "Thank you for reaching out. I'll get back to you soon.",
       });
 
       setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      toast({
+        title: 'Error sending message',
+        description: 'Something went wrong. Please try again later.',
+        variant: 'destructive'
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
