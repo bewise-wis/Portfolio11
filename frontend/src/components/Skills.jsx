@@ -4,6 +4,33 @@ import { getSkills } from '../firebase/services';
 import { skillsData as mockSkillsData } from '../mock';
 
 const Skills = () => {
+  const [skillsData, setSkillsData] = useState(mockSkillsData);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        const data = await getSkills();
+        if (data && data.length > 0) {
+          setSkillsData(data);
+        }
+      } catch (error) {
+        console.error('Error loading skills:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchSkills();
+  }, []);
+
+  if (loading) {
+    return (
+      <section id="skills" className="py-24 px-6 bg-[#111111]">
+        <div className="max-w-6xl mx-auto text-center text-[#71717a]">Loading...</div>
+      </section>
+    );
+  }
+
   return (
     <section id="skills" className="py-24 px-6 bg-[#111111]">
       <div className="max-w-6xl mx-auto">
