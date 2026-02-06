@@ -45,25 +45,25 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 bg-[#0a0a0a]">
+    <section id="contact" className="py-24 px-6 bg-primary transition-colors duration-500">
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+        <div className="text-center mb-16 animate-fade-in-up">
+          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
             Get In Touch
           </h2>
-          <div className="w-20 h-1 bg-blue-500 mx-auto"></div>
-          <p className="text-[#a1a1aa] mt-6 max-w-2xl mx-auto">
+          <div className="w-20 h-1 bg-[rgb(var(--primary))] mx-auto rounded-full"></div>
+          <p className="text-secondary mt-6 max-w-2xl mx-auto">
             Have a project in mind or want to discuss opportunities? Feel free to reach out!
           </p>
         </div>
 
         {/* Contact Form */}
-        <div className="bg-[#1a1a1a] border border-[#27272a] rounded-xl p-8 md:p-10">
+        <div className="bg-surface border border-color rounded-xl p-8 md:p-10 hover-lift animate-fade-in-up delay-200">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Name Field */}
             <div className="space-y-2">
-              <label htmlFor="name" className="text-white text-sm font-medium flex items-center gap-2">
+              <label htmlFor="name" className="text-primary text-sm font-medium flex items-center gap-2">
                 <User size={16} />
                 Name
               </label>
@@ -75,13 +75,13 @@ const Contact = () => {
                 onChange={handleChange}
                 required
                 placeholder="Your name"
-                className="bg-[#0a0a0a] border-[#27272a] text-white placeholder:text-[#71717a] focus:border-blue-500 transition-colors"
+                className="bg-tertiary border-color text-primary placeholder:text-tertiary focus:border-[rgb(var(--primary))] transition-all duration-300"
               />
             </div>
 
             {/* Email Field */}
             <div className="space-y-2">
-              <label htmlFor="email" className="text-white text-sm font-medium flex items-center gap-2">
+              <label htmlFor="email" className="text-primary text-sm font-medium flex items-center gap-2">
                 <Mail size={16} />
                 Email
               </label>
@@ -93,13 +93,13 @@ const Contact = () => {
                 onChange={handleChange}
                 required
                 placeholder="your.email@example.com"
-                className="bg-[#0a0a0a] border-[#27272a] text-white placeholder:text-[#71717a] focus:border-blue-500 transition-colors"
+                className="bg-tertiary border-color text-primary placeholder:text-tertiary focus:border-[rgb(var(--primary))] transition-all duration-300"
               />
             </div>
 
             {/* Message Field */}
             <div className="space-y-2">
-              <label htmlFor="message" className="text-white text-sm font-medium flex items-center gap-2">
+              <label htmlFor="message" className="text-primary text-sm font-medium flex items-center gap-2">
                 <MessageSquare size={16} />
                 Message
               </label>
@@ -111,7 +111,7 @@ const Contact = () => {
                 required
                 placeholder="Tell me about your project or inquiry..."
                 rows={6}
-                className="bg-[#0a0a0a] border-[#27272a] text-white placeholder:text-[#71717a] focus:border-blue-500 transition-colors resize-none"
+                className="bg-tertiary border-color text-primary placeholder:text-tertiary focus:border-[rgb(var(--primary))] transition-all duration-300 resize-none"
               />
             </div>
 
@@ -119,7 +119,7 @@ const Contact = () => {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-6 text-base font-medium transition-all duration-200 flex items-center justify-center gap-2"
+              className="w-full bg-[rgb(var(--primary))] hover:bg-[rgb(var(--primary-hover))] text-white py-6 text-base font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 'Sending...'
