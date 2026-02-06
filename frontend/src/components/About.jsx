@@ -4,6 +4,36 @@ import { getProfile } from '../firebase/services';
 import { aboutData as mockAboutData } from '../mock';
 
 const About = () => {
+  const [aboutData, setAboutData] = useState(mockAboutData);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchAbout = async () => {
+      try {
+        const data = await getProfile();
+        if (data && data.fullBio && data.highlights) {
+          setAboutData({
+            fullBio: data.fullBio,
+            highlights: data.highlights
+          });
+        }
+      } catch (error) {
+        console.error('Error loading about data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchAbout();
+  }, []);
+
+  if (loading) {
+    return (
+      <section id="about" className="py-24 px-6 bg-[#0a0a0a]">
+        <div className="max-w-5xl mx-auto text-center text-[#71717a]">Loading...</div>
+      </section>
+    );
+  }
+
   return (
     <section id="about" className="py-24 px-6 bg-[#0a0a0a]">
       <div className="max-w-5xl mx-auto">
