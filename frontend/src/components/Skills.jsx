@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Badge } from './ui/badge';
-import { skillsData } from '../mock';
+import { getSkills } from '../firebase/services';
+import { skillsData as mockSkillsData } from '../mock';
 
 const Skills = () => {
   return (
