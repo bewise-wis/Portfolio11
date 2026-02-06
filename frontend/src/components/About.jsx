@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Check } from 'lucide-react';
-import { aboutData } from '../mock';
+import { getProfile } from '../firebase/services';
+import { aboutData as mockAboutData } from '../mock';
 
 const About = () => {
   return (
