@@ -10,6 +10,7 @@ import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { Toaster } from './components/ui/toaster';
+import { AuthProvider } from './context/AuthContext';
 
 const Home = () => {
   return (
