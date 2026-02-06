@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
+import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
