@@ -11,7 +11,8 @@ from datetime import datetime
 import sys
 
 # Configuration
-FRONTEND_URL = "https://besongwisdom.online"
+FRONTEND_URL = "http://localhost:3000"  # Local development server
+PRODUCTION_URL = "https://besongwisdom.online"  # Production server
 BACKEND_API_URL = "https://besongwisdom.online/api"
 
 class PortfolioTester:
