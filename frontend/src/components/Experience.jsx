@@ -4,11 +4,38 @@ import { getExperience } from '../firebase/services';
 import { experienceData as mockExperienceData } from '../mock';
 
 const Experience = () => {
+  const [experienceData, setExperienceData] = useState(mockExperienceData);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchExperience = async () => {
+      try {
+        const data = await getExperience();
+        if (data && data.length > 0) {
+          setExperienceData(data);
+        }
+      } catch (error) {
+        console.error('Error loading experience:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchExperience();
+  }, []);
+
   const formatDate = (dateString) => {
     if (!dateString) return 'Present';
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
   };
+
+  if (loading) {
+    return (
+      <section id="experience" className="py-24 px-6 bg-[#111111]">
+        <div className="max-w-5xl mx-auto text-center text-[#71717a]">Loading...</div>
+      </section>
+    );
+  }
 
   return (
     <section id="experience" className="py-24 px-6 bg-[#111111]">
