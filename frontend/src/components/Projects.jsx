@@ -6,6 +6,33 @@ import { getProjects } from '../firebase/services';
 import { projectsData as mockProjectsData } from '../mock';
 
 const Projects = () => {
+  const [projectsData, setProjectsData] = useState(mockProjectsData);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const data = await getProjects();
+        if (data && data.length > 0) {
+          setProjectsData(data);
+        }
+      } catch (error) {
+        console.error('Error loading projects:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProjects();
+  }, []);
+
+  if (loading) {
+    return (
+      <section id="projects" className="py-24 px-6 bg-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto text-center text-[#71717a]">Loading...</div>
+      </section>
+    );
+  }
+
   return (
     <section id="projects" className="py-24 px-6 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto">
