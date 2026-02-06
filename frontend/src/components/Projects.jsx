@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ExternalLink, Github } from 'lucide-react';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
-import { projectsData } from '../mock';
+import { getProjects } from '../firebase/services';
+import { projectsData as mockProjectsData } from '../mock';
 
 const Projects = () => {
   return (
