@@ -33,8 +33,8 @@ const Hero = () => {
 
   if (loading) {
     return (
-      <section className="min-h-screen flex items-center justify-center px-6 py-20 bg-gradient-to-b from-[#0a0a0a] to-[#111111]">
-        <div className="text-[#71717a] text-lg">Loading...</div>
+      <section className="min-h-screen flex items-center justify-center px-6 py-20 bg-gradient-to-br from-[rgb(var(--bg-primary))] via-[rgb(var(--bg-secondary))] to-[rgb(var(--bg-tertiary))]">
+        <div className="text-tertiary text-lg animate-pulse">Loading...</div>
       </section>
     );
   }
