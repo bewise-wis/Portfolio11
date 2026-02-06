@@ -5,12 +5,39 @@ import { getProfile } from '../firebase/services';
 import { profileData as mockProfileData } from '../mock';
 
 const Hero = () => {
+  const [profileData, setProfileData] = useState(mockProfileData);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const data = await getProfile();
+        if (data) {
+          setProfileData(data);
+        }
+      } catch (error) {
+        console.error('Error loading profile:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProfile();
+  }, []);
+
   const scrollToContact = () => {
     const element = document.querySelector('#contact');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  if (loading) {
+    return (
+      <section className="min-h-screen flex items-center justify-center px-6 py-20 bg-gradient-to-b from-[#0a0a0a] to-[#111111]">
+        <div className="text-[#71717a] text-lg">Loading...</div>
+      </section>
+    );
+  }
 
   return (
     <section className="min-h-screen flex items-center justify-center px-6 py-20 bg-gradient-to-b from-[#0a0a0a] to-[#111111]">
