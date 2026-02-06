@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Twitter, Mail, MapPin } from 'lucide-react';
 import { Button } from './ui/button';
-import { profileData } from '../mock';
+import { getProfile } from '../firebase/services';
+import { profileData as mockProfileData } from '../mock';
 
 const Hero = () => {
   const scrollToContact = () => {
